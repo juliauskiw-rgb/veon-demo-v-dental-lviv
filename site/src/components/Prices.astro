@@ -1,0 +1,34 @@
+---
+import CallButton from "./CallButton.astro";
+import FutureLink from "./FutureLink.astro";
+import { priceGroups } from "../data/content";
+import { futureNote } from "../data/site";
+---
+<section id="prices" class="sec prices" data-rec="R-004">
+  <div class="wrap">
+    <h2 class="step-head">Ціни клініки у Львові</h2>
+    <p class="prices__caption">Прайс клініки, листопад 2026. Актуальність цін підтверджує адміністратор.</p>
+    <div class="prices__groups">
+      {priceGroups.map((group, i) => (
+        <div class:list={["pg", i > 0 && "is-closable"]} data-pg>
+          <h3 class="pg__title">
+            {group.title}
+            <button class="pg__toggle" type="button" aria-expanded="true" aria-controls={`pg-${group.id}`} aria-label={`Ціни: ${group.title}`}></button>
+          </h3>
+          <ul class="pg__rows" id={`pg-${group.id}`}>
+            {group.rows.map((row) => (
+              <li class="pg__row">
+                <span>{row.name}{row.note && <small class="pg__note">{row.note}</small>}</span>
+                <span class="line__price">{row.price}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="prices__foot">
+      <CallButton compact />
+      <FutureLink note={futureNote}>Повний прайс: 90 позицій</FutureLink>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,48 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Routes from "../components/Routes.astro";
+import FirstVisit from "../components/FirstVisit.astro";
+import Prices from "../components/Prices.astro";
+import Doctors from "../components/Doctors.astro";
+import Proof from "../components/Proof.astro";
+import Contacts from "../components/Contacts.astro";
+import Footer from "../components/Footer.astro";
+import CallBar from "../components/CallBar.astro";
+import { phone } from "../data/site";
+import "../styles/site.css";
+import "../styles/sections.css";
+import "../styles/motion.css";
+
+const title = "Стоматологія Vidnova у Львові: ціни, лікарі, Куровця, 10";
+const description = "Стоматологія Vidnova на вул. Куровця, 10 у Львові: лікування, імплантація, ортодонтія, дитячий прийом. Ціни та лікарі на одній сторінці.";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "Vidnova Clinic",
+  telephone: phone.href.replace("tel:", ""),
+  address: { "@type": "PostalAddress", streetAddress: "вул. Івана-Теодозія Куровця, 10", addressLocality: "Львів", postalCode: "79000", addressCountry: "UA" },
+};
+---
+<Base lang="uk" title={title} description={description}>
+  <Fragment slot="head">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="fonts/arsenal-cyrillic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/arsenal-latin.woff2" as="font" type="font/woff2" crossorigin />
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </Fragment>
+  <Header slot="header" />
+  <Hero />
+  <Routes />
+  <FirstVisit />
+  <Prices />
+  <Doctors />
+  <Proof />
+  <Contacts />
+  <Fragment slot="footer">
+    <Footer />
+    <CallBar />
+  </Fragment>
+</Base>
+<script src="../scripts/site.ts"></script>

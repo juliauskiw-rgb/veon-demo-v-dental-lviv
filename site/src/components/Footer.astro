@@ -1,0 +1,20 @@
+---
+import Logo from "./Logo.astro";
+import FutureLink from "./FutureLink.astro";
+import { phone, email, address, socials, futurePages, futureNote } from "../data/site";
+---
+<footer class="site-footer">
+  <div class="wrap site-footer__in">
+    <a class="site-footer__logo" href="#top" aria-label="Vidnova Clinic, на початок сторінки"><Logo /></a>
+    <ul class="site-footer__real">
+      <li><a href={phone.href}>{phone.text}</a></li>
+      <li><a href={`mailto:${email}`}>{email}</a></li>
+      <li><a href={address.map}>Карта</a></li>
+      {socials.map((s) => <li><a href={s.href}>{s.label}</a></li>)}
+    </ul>
+    <ul class="site-footer__future">
+      {futurePages.map((p) => <li><FutureLink note={futureNote}>{p}</FutureLink></li>)}
+    </ul>
+    <p class="site-footer__legal">© Vidnova Clinic. Ліцензія МОЗ №2070</p>
+  </div>
+</footer>

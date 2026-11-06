@@ -1,0 +1,24 @@
+---
+import FutureLink from "./FutureLink.astro";
+import { doctors } from "../data/content";
+import { futureNote } from "../data/site";
+---
+<section id="doctors" class="sec sec--field doctors" data-rec="R-004">
+  <div class="wrap">
+    <h2 class="step-head">Хто вас прийме</h2>
+    <ul class="doctors__row">
+      {doctors.map((d) => (
+        <li class="doctor">
+          <div class="doctor__photo">
+            <img src={`img/doctor-${d.file}-440.webp`} srcset={`img/doctor-${d.file}-260.webp 260w, img/doctor-${d.file}-440.webp 440w`}
+              sizes="(min-width: 60rem) 200px, 45vw" width="440" height="578" loading="lazy" decoding="async"
+              alt={`Портрет: ${d.surname} ${d.name}`} />
+          </div>
+          <h3 class="doctor__name">{d.surname} <span class="doctor__given">{d.name}</span></h3>
+          <p class="doctor__role">{d.role}</p>
+        </li>
+      ))}
+    </ul>
+    <p class="doctors__foot"><FutureLink note={futureNote}>Усі лікарі</FutureLink></p>
+  </div>
+</section>

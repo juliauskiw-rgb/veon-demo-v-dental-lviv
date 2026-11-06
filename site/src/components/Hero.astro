@@ -1,0 +1,24 @@
+---
+import CallButton from "./CallButton.astro";
+import { address } from "../data/site";
+import { from } from "../data/content";
+---
+<section id="hero" class="sec sec--field hero" data-rec="R-001">
+  <div class="wrap hero__text">
+    <h1 class="step-head">Стоматологія Vidnova у Львові, <span class="nb">на Куровця, 10</span></h1>
+    <p class="hero__lede">Кожен крок лікування видно з ціною ще до дзвінка.</p>
+    <div class="hero__actions">
+      <CallButton />
+      <a class="tlink" href={address.map}>Прокласти маршрут</a>
+      <p class="hero__rate">4,9 на Google, 574 відгуки</p>
+    </div>
+    <a class="hero__step" href="#routes">Наприклад, зняття гострого болю:&nbsp;<span class="line__price">{from(1100)}</span></a>
+  </div>
+  <picture class="hero__photo">
+    <source media="(min-width: 40rem)" type="image/webp" width="1551" height="830" sizes="100vw"
+      srcset="img/hero-wide-720.webp 720w, img/hero-wide-1080.webp 1080w, img/hero-wide-1551.webp 1551w" />
+    <img src="img/hero-tall-800.webp" srcset="img/hero-tall-420.webp 420w, img/hero-tall-800.webp 800w, img/hero-tall-1200.webp 1200w"
+      sizes="100vw" width="1200" height="1334" fetchpriority="high" decoding="async"
+      alt="Рецепція клініки Vidnova на Куровця, 10: світла стійка, логотип на мармуровій стіні й адміністраторка" />
+  </picture>
+</section>

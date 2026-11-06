@@ -1,0 +1,40 @@
+---
+// One markup for both widths: a list of problems and a panel each. Without JS every panel stays open.
+import CallButton from "./CallButton.astro";
+import FutureLink from "./FutureLink.astro";
+import { routes } from "../data/content";
+import { futureNote } from "../data/site";
+---
+<section id="routes" class="sec routes" data-rec="R-003">
+  <div class="wrap">
+    <h2 class="step-head">З чим ви прийшли?</h2>
+    <div class="routes__grid" data-routes>
+      {routes.map((route, i) => (
+        <Fragment>
+          <h3 class="routes__head" style={`--row:${i + 1}`}>
+            <button class="routes__btn" type="button" id={`route-btn-${route.id}`} aria-controls={`route-${route.id}`} aria-expanded={i === 0 ? "true" : "false"}>{route.title}</button>
+          </h3>
+          <div class:list={["routes__panel", i === 0 && "is-open"]} id={`route-${route.id}`} role="region" aria-labelledby={`route-btn-${route.id}`}>
+            <ol class="steps">
+              {route.steps.map((step, s) => (
+                <li class="steps__step" style={`--i:${s}`}>
+                  {step.map((line) => (
+                    <p class="line"><span>{line.name}</span><span class="line__price">{line.price}</span></p>
+                  ))}
+                </li>
+              ))}
+            </ol>
+            {route.stepNote && <p class="routes__note">{route.stepNote}</p>}
+            {route.doctors && <p class="routes__doctors">Лікарі: {route.doctors}</p>}
+            <div class="routes__foot">
+              <CallButton compact />
+              <a class="tlink" href="#prices">Усі ціни</a>
+              <FutureLink note={futureNote}>Детальніше про послугу</FutureLink>
+            </div>
+          </div>
+        </Fragment>
+      ))}
+    </div>
+    <p class="routes__caption">Порядок і обсяг лікування визначає лікар на консультації.</p>
+  </div>
+</section>

@@ -1,0 +1,24 @@
+---
+import CallButton from "./CallButton.astro";
+import { phone, email, address, messengers } from "../data/site";
+---
+<section id="contacts" class="sec sec--field contacts">
+  <div class="wrap contacts__grid">
+    <div class="contacts__main">
+      <h2 class="step-head">Усі маршрути ведуть на Куровця, 10</h2>
+      <a class="contacts__phone" href={phone.href} data-rec="R-002">{phone.text}</a>
+      <CallButton compact class="contacts__call" />
+      <ul class="contacts__links">
+        <li><a class="tlink" href={address.map}>Прокласти маршрут</a></li>
+        <li><a class="tlink" href={`mailto:${email}`}>{email}</a></li>
+        {messengers.map((m) => <li><a class="tlink" href={m.href}>{m.label}</a></li>)}
+      </ul>
+      <p class="contacts__address">{address.short}, {address.city}</p>
+    </div>
+    <picture class="contacts__photo">
+      <img src="img/reception-900.webp" srcset="img/reception-560.webp 560w, img/reception-900.webp 900w, img/reception-1280.webp 1280w"
+        sizes="(min-width: 60rem) 44vw, 100vw" width="1280" height="1000" loading="lazy" decoding="async"
+        alt="Рецепція клініки Vidnova: мармурова стіна з логотипом і світла стійка" />
+    </picture>
+  </div>
+</section>

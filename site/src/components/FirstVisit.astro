@@ -1,0 +1,20 @@
+---
+import { uah } from "../data/content";
+---
+<section id="first-visit" class="sec sec--stone first-visit">
+  <div class="wrap">
+    <div class="first-visit__text">
+      <h2 class="step-head">Консультація: <span class="first-visit__price">{uah(350)}</span></h2>
+      <ol class="steps first-visit__steps">
+        <li class="steps__step"><p class="line"><span>Консультація</span><span class="line__price">{uah(350)}</span></p></li>
+        <li class="steps__step"><p class="line"><span>Панорамний знімок, якщо він потрібен лікарю</span><span class="line__price">{uah(400)}</span></p></li>
+        <li class="steps__step"><p class="line"><span>План лікування в ортодонта чи ортопеда</span><span class="line__price">{uah(650)}</span></p></li>
+      </ol>
+    </div>
+  </div>
+  <picture class="first-visit__photo">
+    <img src="img/first-visit-1000.webp" srcset="img/first-visit-640.webp 640w, img/first-visit-1000.webp 1000w, img/first-visit-1500.webp 1500w"
+      sizes="(min-width: 60rem) 48vw, 100vw" width="1500" height="930" loading="lazy" decoding="async"
+      alt="Лікар клініки Vidnova у кабінеті розмовляє з пацієнткою" />
+  </picture>
+</section>

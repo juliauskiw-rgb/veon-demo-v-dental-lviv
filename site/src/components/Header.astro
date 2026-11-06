@@ -1,0 +1,34 @@
+---
+import Logo from "./Logo.astro";
+import CallButton from "./CallButton.astro";
+import FutureLink from "./FutureLink.astro";
+import { nav, phone, address, futurePages, futureNote } from "../data/site";
+---
+<header class="site-header">
+  <div class="site-header__in">
+    <a class="site-logo" href="#top" aria-label="Vidnova Clinic, на початок сторінки"><Logo /></a>
+    <nav class="mini-route" aria-label="Розділи сторінки" data-rec="R-005">
+      <ol class="mini-route__list">
+        {nav.map((item) => <li><a href={`#${item.id}`}>{item.label}</a></li>)}
+      </ol>
+      <span class="mini-route__marker" aria-hidden="true"></span>
+    </nav>
+    <a class="site-header__phone" href={phone.href} data-rec="R-002">{phone.text}</a>
+    <CallButton compact class="site-header__call" />
+    <a class="icon-phone" href={phone.href} aria-label={`Зателефонувати: ${phone.text}`} data-rec="R-002">
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6.6 3.5h2.6l1.5 4.2-2 1.5a12 12 0 0 0 6.1 6.1l1.5-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2C10.7 18.8 5.2 13.3 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>
+    </a>
+    <details class="mnav" data-mnav>
+      <summary class="mnav__toggle" aria-label="Меню"><span aria-hidden="true"></span></summary>
+      <div class="mnav__panel">
+        <ul class="mnav__list" data-rec="R-005">
+          {nav.map((item) => <li><a href={`#${item.id}`}>{item.label}</a></li>)}
+        </ul>
+        <p class="mnav__contact"><a href={phone.href} data-rec="R-002">{phone.text}</a><br />{address.short}, Львів</p>
+        <ul class="mnav__future">
+          {futurePages.map((p) => <li><FutureLink note={futureNote}>{p}</FutureLink></li>)}
+        </ul>
+      </div>
+    </details>
+  </div>
+</header>

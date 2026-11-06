@@ -1,0 +1,10 @@
+---
+// The one primary action of the page: a real call. Green is used here and nowhere else.
+import { phone } from "../data/site";
+interface Props { compact?: boolean; class?: string; }
+const { compact = false, class: cls } = Astro.props;
+---
+<a class:list={["call", compact && "call--compact", cls]} href={phone.href} data-rec="R-002,R-005,R-013,MA-R003">
+  <span class="call__label">Зателефонувати</span>
+  {!compact && <span class="call__number">{phone.text}</span>}
+</a>
